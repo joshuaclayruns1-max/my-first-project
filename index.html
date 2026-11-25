@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>800m Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>800m Tracker</h1>
+    <p class="sub">Training, food, and groceries for indoor season</p>
+  </header>
+
+  <nav role="tablist">
+    <button class="tab active" data-tab="workouts">Workouts</button>
+    <button class="tab" data-tab="food">Food</button>
+    <button class="tab" data-tab="groceries">Groceries</button>
+    <button class="tab" data-tab="plan">Season plan</button>
+  </nav>
+
+  <main>
+    <!-- WORKOUTS -->
+    <section id="workouts" class="panel active">
+      <div class="stats" id="workout-stats"></div>
+      <form id="workout-form" class="card">
+        <h2>Log a workout</h2>
+        <div class="row">
+          <label>Date <input type="date" name="date" required></label>
+          <label>Type
+            <select name="type">
+              <option>Easy run</option>
+              <option>Intervals</option>
+              <option>Tempo</option>
+              <option>Long run</option>
+              <option>Race</option>
+              <option>Strength</option>
+              <option>Rest / mobility</option>
+            </select>
+          </label>
+        </div>
+        <div class="row">
+          <label>Distance (miles) <input type="number" name="distance" step="0.1" min="0"></label>
+          <label>Effort (1–10) <input type="number" name="effort" min="1" max="10"></label>
+        </div>
+        <label>Details (splits, reps, how you felt)
+          <textarea name="notes" rows="2" placeholder="e.g. 4x300 @ 42s, 3 min rest. Legs felt good."></textarea>
+        </label>
+        <button type="submit">Save workout</button>
+      </form>
+      <ul id="workout-list" class="list"></ul>
+    </section>
+
+    <!-- FOOD -->
+    <section id="food" class="panel">
+      <div class="stats" id="food-stats"></div>
+      <form id="food-form" class="card">
+        <h2>Log food</h2>
+        <div class="row">
+          <label>Date <input type="date" name="date" required></label>
+          <label>Meal
+            <select name="meal">
+              <option>Breakfast</option>
+              <option>Lunch</option>
+              <option>Dinner</option>
+              <option>Snack</option>
+              <option>Pre-workout</option>
+              <option>Post-workout</option>
+            </select>
+          </label>
+        </div>
+        <label>What you ate <input type="text" name="item" required placeholder="e.g. Oatmeal with banana and peanut butter"></label>
+        <div class="row">
+          <label>Calories <input type="number" name="calories" min="0"></label>
+          <label>Protein (g) <input type="number" name="protein" min="0"></label>
+        </div>
+        <button type="submit">Save food</button>
+      </form>
+      <ul id="food-list" class="list"></ul>
+    </section>
+
+    <!-- GROCERIES -->
+    <section id="groceries" class="panel">
+      <form id="grocery-form" class="card">
+        <h2>Shopping list</h2>
+        <div class="row inline">
+          <input type="text" name="item" required placeholder="Add an item">
+          <button type="submit">Add</button>
+        </div>
+        <button type="button" id="add-staples" class="secondary">Add runner staples</button>
+        <button type="button" id="clear-bought" class="secondary">Remove checked items</button>
+      </form>
+      <ul id="grocery-list" class="list"></ul>
+    </section>
+
+    <!-- PLAN -->
+    <section id="plan" class="panel">
+      <div class="card">
+        <h2>Sample training week</h2>
+        <p class="muted">A common shape for 800m runners in season. Adjust it with your coach, and shrink it if you're new or coming back from injury.</p>
+        <table>
+          <tbody>
+            <tr><th>Mon</th><td>Easy run 20–35 min + strides (6x100m)</td></tr>
+            <tr><th>Tue</th><td><b>Speed endurance:</b> e.g. 4x300m at 800 pace, full rest (4–6 min)</td></tr>
+            <tr><th>Wed</th><td>Easy run + strength (squats, lunges, core, calf raises)</td></tr>
+            <tr><th>Thu</th><td><b>Aerobic power:</b> e.g. 5x600m a bit slower than mile pace, 2 min rest, or a 15–20 min tempo</td></tr>
+            <tr><th>Fri</th><td>Rest or easy shakeout + mobility</td></tr>
+            <tr><th>Sat</th><td>Race, or short fast work: e.g. 2x(200m, 200m) fast with walk rest</td></tr>
+            <tr><th>Sun</th><td>Longer easy run (40–60 min), relaxed</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>What makes you faster indoors</h2>
+        <ul class="tips">
+          <li><b>Speed endurance.</b> The 800 is mostly about holding speed while tired. Reps of 200–400m at race pace or faster train that.</li>
+          <li><b>Aerobic base.</b> Most of an 800 runs on aerobic energy. Easy miles still matter, so keep easy days truly easy.</li>
+          <li><b>Practice on the turns.</b> Indoor tracks are tight (often 200m). Run some reps indoors to learn to lean into turns and hold your lane.</li>
+          <li><b>Race tactics.</b> Indoors, position matters. Practice a fast first 100m to get a good spot, then relax down the back.</li>
+          <li><b>Strength twice a week.</b> Stronger legs and core help with turns, kicks, and staying injury-free.</li>
+          <li><b>Sleep 8+ hours.</b> Most of your adaptation happens while you recover.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Eating for the 800</h2>
+        <ul class="tips">
+          <li><b>Carbs fuel hard days.</b> Eat more rice, pasta, oats, potatoes, and fruit on workout and race days.</li>
+          <li><b>Protein at every meal.</b> Eggs, chicken, Greek yogurt, beans, fish, milk. Spread it through the day.</li>
+          <li><b>Eat after hard sessions.</b> A snack with carbs and protein within about an hour (chocolate milk works).</li>
+          <li><b>Iron matters for runners.</b> Lean red meat, beans, spinach, fortified cereal. If you feel tired all the time, ask a doctor to check it.</li>
+          <li><b>Don't under-eat.</b> Not eating enough slows recovery and raises injury risk. Fuel the training you're doing.</li>
+          <li><b>Race day:</b> a familiar, light meal 3–4 hours before, and a small snack (banana, toast) about an hour before.</li>
+        </ul>
+      </div>
+      <p class="muted small">General guidance, not medical advice. Talk to your coach or a doctor about your own plan.</p>
+    </section>
+  </main>
+
+  <footer class="muted small">Your data is saved in this browser only.</footer>
+  <script src="app.js"></script>
+</body>
+</html>
